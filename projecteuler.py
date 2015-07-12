@@ -1,6 +1,6 @@
 import math
 import mathhelper
-
+import itertools
 
 def problem1():
     """ Multiples of 3 and 5
@@ -46,4 +46,4 @@ def problem4():
     Find the largest palindrome made from the product of two 3-digit numbers.
 
     """
-    return max((x * y for x in range(100, 999) for y in range(100, 999) if mathhelper.isPalindromic(x * y)))
+    return max(x * y for (x, y) in itertools.product(range(100, 1000), range(100, 1000)) if mathhelper.isPalindromic(x * y))
