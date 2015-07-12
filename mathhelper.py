@@ -20,3 +20,9 @@ def isPrime(number):
 
 def isPalindromic(number):
     return str(number)[::-1] == str(number)
+
+def fibonacciList(maxNumber):
+    a, b = 1, 1
+    while a < maxNumber:
+        yield a
+        a, b = b, a + b

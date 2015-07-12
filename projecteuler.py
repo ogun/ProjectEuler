@@ -8,7 +8,7 @@ def problem1():
     Find the sum of all the multiples of 3 or 5 below 1000.
 
     """
-    return sum((x for x in range(1000) if x % 3 == 0 or x % 5 == 0))
+    return sum(x for x in range(1000) if x % 3 == 0 or x % 5 == 0)
 
 
 def problem2():
@@ -16,16 +16,10 @@ def problem2():
     By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
     """
-    tempFib = 1
-    preFib = 1
-    nextFib = tempFib + preFib
     returnValue = 0
-    while nextFib < 4000000:
-        if nextFib % 2 == 0:
-            returnValue += nextFib
-        tempFib = nextFib
-        nextFib += preFib
-        preFib = tempFib
+    for number in mathhelper.fibonacciList(4000000):
+        if number % 2 == 0:
+            returnValue += number
     return returnValue
 
 
