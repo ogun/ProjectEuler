@@ -1,3 +1,4 @@
+﻿import fractions
 import math
 
 def isPrime(number):
@@ -26,3 +27,37 @@ def fibonacciList(maxNumber):
     while a < maxNumber:
         yield a
         a, b = b, a + b
+
+def greatestCommonDivisor(*numbers):
+    if len(numbers) == 0:
+        return 0
+
+    if len(numbers) == 1:
+        return numbers[0]
+
+    if len(numbers) == 2:
+        return fractions.gcd(numbers[0], numbers[1])
+
+    firstNumber = numbers[0]
+    returnValue = firstNumber
+    for number in numbers[1:]:
+        returnValue = fractions.gcd(returnValue, number)
+
+    return returnValue
+
+def lcm(a, b):
+    return (a * b) // greatestCommonDivisor(a, b)
+
+def leastCommonMultiple(*numbers):
+    if len(numbers) == 0:
+        return 0
+
+    if len(numbers) == 1:
+        return numbers[0]
+
+    firstNumber = numbers[0]
+    returnValue = firstNumber
+    for number in numbers[1:]:
+        returnValue = lcm(returnValue, number)
+
+    return returnValue
