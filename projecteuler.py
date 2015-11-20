@@ -101,3 +101,10 @@ def problem9():
             c = 1000 - (a + b)
             if a ** 2 + b ** 2 == c ** 2:
                 return a * b * c
+
+def problem10():
+    """ Summation of primes
+    Find the sum of all the primes below two million.
+
+    """
+    return sum(x for x in range(2, 2000000) if mathhelper.isPrime(x))
