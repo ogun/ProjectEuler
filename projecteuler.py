@@ -231,8 +231,8 @@ def problem11():
 def problem12():
     """ Highly divisible triangular number
     What is the value of the first triangle number to have over five hundred divisors?
+
     """
-    # TODO: performansı kontrol edilecek
     for triangle_number in mathhelper.triangle_number_list(None):
         if mathhelper.factor_count(triangle_number) > 500:
             return triangle_number
@@ -345,3 +345,18 @@ def problem13():
             "53503534226472524250874054075591789781264330331690")
 
     return int(str(sum(int(x) for x in data.split("\n")))[:10])
+
+
+def problem14():
+    """ Longest Collatz sequence
+    Which starting number, under one million, produces the longest chain?
+
+    """
+    longest_chain = 1
+    chain_number = 1
+    for number in range(1, 1000000):
+        chain_count = mathhelper.collatz_sequence_chain_count(number)
+        if chain_count > longest_chain:
+            longest_chain = chain_count
+            chain_number = number
+    return chain_number

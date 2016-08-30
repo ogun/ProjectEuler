@@ -3,6 +3,22 @@ import math
 import sys
 
 
+def collatz_sequence_chain_count(number):
+    """Verilen sayının toplam collatz serisi sayısını belirler"""
+
+    if number == 1:
+        return 1
+
+    chain_count = 1
+    while number != 1:
+        if number % 2 == 0:
+            number /= 2
+        else:
+            number = (3 * number) + 1
+        chain_count += 1
+    return chain_count
+
+
 def factor_count(number):
     """Verilen sayının toplam çarpan sayısını belirler"""
     if number == 0:

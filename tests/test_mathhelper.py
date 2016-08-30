@@ -3,6 +3,12 @@ import mathhelper
 
 
 class TestMathHelper(unittest.TestCase):
+    def test_collatz_sequence_chain_count(self):
+        self.assertEqual(mathhelper.collatz_sequence_chain_count(1), 1)
+        self.assertEqual(mathhelper.collatz_sequence_chain_count(2), 2)
+        self.assertEqual(mathhelper.collatz_sequence_chain_count(3), 8)
+        self.assertEqual(mathhelper.collatz_sequence_chain_count(13), 10)
+
     def test_factor_count(self):
         self.assertEqual(mathhelper.factor_count(-5), 2)
         self.assertEqual(mathhelper.factor_count(-4), 3)
