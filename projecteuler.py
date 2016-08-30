@@ -231,8 +231,8 @@ def problem11():
 def problem12():
     """ Highly divisible triangular number
     What is the value of the first triangle number to have over five hundred divisors?
-    TODO: performansı kontrol edilecek
     """
+    # TODO: performansı kontrol edilecek
     for triangle_number in mathhelper.triangle_number_list(None):
         if mathhelper.factor_count(triangle_number) > 500:
             return triangle_number
