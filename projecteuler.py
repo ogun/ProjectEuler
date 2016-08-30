@@ -368,3 +368,11 @@ def problem15():
 
     """
     return math.factorial(40) / (math.factorial(20) ** 2)
+
+
+def problem16():
+    """ Power digit sum
+    What is the sum of the digits of the number 2^1000?
+
+    """
+    return mathhelper.sum_digits(2 ** 1000)

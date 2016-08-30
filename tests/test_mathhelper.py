@@ -113,6 +113,15 @@ class TestMathHelper(unittest.TestCase):
         self.assertEqual(list(mathhelper.prime_number_list(10)), [2, 3, 5, 7])
         self.assertEqual(list(mathhelper.prime_number_list(17)), [2, 3, 5, 7, 11, 13, 17])
 
+    def test_sum_digits(self):
+        self.assertEqual(mathhelper.sum_digits(-1), 1)
+        self.assertEqual(mathhelper.sum_digits(0), 0)
+        self.assertEqual(mathhelper.sum_digits(1), 1)
+        self.assertEqual(mathhelper.sum_digits(2), 2)
+        self.assertEqual(mathhelper.sum_digits(21), 3)
+        self.assertEqual(mathhelper.sum_digits(867), 21)
+        self.assertEqual(mathhelper.sum_digits(99000009), 27)
+
     def test_triangle_number_list(self):
         self.assertEqual(list(mathhelper.triangle_number_list(-5)), [])
         self.assertEqual(list(mathhelper.triangle_number_list(-3)), [])

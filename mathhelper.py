@@ -141,6 +141,17 @@ def prime_number_list(max_number):
             yield number
 
 
+def sum_digits(number):
+    """Verilen sayının rakamlarının toplamını belirler"""
+    number = abs(number)
+
+    return_value = 0
+    while number:
+        return_value += number % 10
+        number //= 10
+    return return_value
+
+
 def triangle_number_list(max_number):
     """Verilen sayıya kadar olan triangle sayıları listeler
     max_number olarak None verilirse sys.maxsize'a kadar listeler"""
