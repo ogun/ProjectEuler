@@ -360,3 +360,11 @@ def problem14():
             longest_chain = chain_count
             chain_number = number
     return chain_number
+
+
+def problem15():
+    """ Lattice paths
+    How many such routes are there through a 20×20 grid?
+
+    """
+    return math.factorial(40) / (math.factorial(20) ** 2)
