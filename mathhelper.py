@@ -147,6 +147,6 @@ def triangle_number_list(max_number):
     limit = sys.maxsize if max_number is None else int(max_number) + 1
     for number in range(1, limit):
         return_value = int(number * (number + 1) / 2)
-        if return_value > limit:
+        if return_value >= limit:
             break
         yield return_value
