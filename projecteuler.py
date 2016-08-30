@@ -20,7 +20,7 @@ def problem2():
 
     """
     return_value = 0
-    for number in mathhelper.fibonacci_list(4000000):
+    for number in mathhelper.fibonacci_number_list(4000000):
         if number % 2 == 0:
             return_value += number
     return return_value
@@ -173,7 +173,6 @@ def problem11():
             "20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16\n"
             "20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54\n"
             "01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48")
-
     matrix = [[int(column) for column in row.split(" ")] for row in grid.split("\n")]
 
     largest_product = 0
@@ -227,3 +226,13 @@ def problem11():
                 largest_product = max(largest_product, temp)
 
     return largest_product
+
+
+def problem12():
+    """ Highly divisible triangular number
+    What is the value of the first triangle number to have over five hundred divisors?
+    TODO: performansı kontrol edilecek
+    """
+    for triangle_number in mathhelper.triangle_number_list(None):
+        if mathhelper.factor_count(triangle_number) > 500:
+            return triangle_number
