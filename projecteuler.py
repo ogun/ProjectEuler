@@ -1,5 +1,6 @@
 ﻿"""Project Euler"""
 import math
+import os
 import itertools
 import mathhelper
 
@@ -415,22 +416,31 @@ def problem18():
 
             matrix[row_number][column_number] += new_value
 
-    return max(x for x in matrix[row_count - 1])
+    return max(cell for cell in matrix[row_count - 1])
 
 
+def problem67():
+    """ Maximum path sum II
+     Find the maximum total from top to bottom of the triangle below:
 
+     """
+    with open(os.path.join(os.path.dirname(__file__), "data", "p067_triangle.txt"), 'r') as file:
+        data = file.read()
 
+    matrix = [[int(column) for column in row.split(" ")] for row in data.split("\n")]
 
+    row_count = len(matrix)
+    for row_number in range(1, row_count):
+        column_count = len(matrix[row_number])
+        for column_number in range(column_count):
+            if column_number == 0:
+                new_value = matrix[row_number - 1][column_number]
+            elif column_number == column_count - 1:
+                new_value = matrix[row_number - 1][column_number - 1]
+            else:
+                new_value = max(matrix[row_number - 1][column_number - 1], \
+                                matrix[row_number - 1][column_number])
 
+            matrix[row_number][column_number] += new_value
 
-
-
-
-
-
-
-
-
-
-
-
+    return max(cell for cell in matrix[row_count - 1])
