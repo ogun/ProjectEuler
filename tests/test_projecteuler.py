@@ -51,5 +51,8 @@ class TestProjectEuler(unittest.TestCase):
     def test_problem16(self):
         self.assertEqual(projecteuler.problem16(), 1366)
 
+    def test_problem18(self):
+        self.assertEqual(projecteuler.problem18(), 1074)
+
 if __name__ == '__main__':
     unittest.main()
