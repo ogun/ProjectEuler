@@ -2,6 +2,7 @@
 import math
 import os
 import itertools
+import datetime
 import mathhelper
 
 
@@ -417,6 +418,23 @@ def problem18():
             matrix[row_number][column_number] += new_value
 
     return max(cell for cell in matrix[row_count - 1])
+
+
+def problem19():
+    """ Counting Sundays
+     How many Sundays fell on the first of the month during the twentieth
+     century (1 Jan 1901 to 31 Dec 2000)?
+
+     """
+    start_date = datetime.datetime.strptime("01/01/1901", "%d/%m/%Y")
+    end_date = datetime.datetime.strptime("31/12/2000", "%d/%m/%Y")
+
+    return_value = 0
+    for day in range(int((end_date - start_date).days)):
+        new_date = start_date + datetime.timedelta(day)
+        if new_date.day == 1 and new_date.isoweekday() == 7:
+            return_value += 1
+    return return_value
 
 
 def problem67():
