@@ -479,6 +479,16 @@ def problem23():
     return sum(x for x in range(1, 28124) if x not in abundants_sum)
 
 
+def problem24():
+    """ Lexicographic permutations
+    What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
+
+    """
+    numbers = "0123456789"
+    sorted_permutations = sorted(itertools.permutations(list(numbers), len(numbers)))
+    return int("".join(sorted_permutations[999999]))
+
+
 def problem67():
     """ Maximum path sum II
      Find the maximum total from top to bottom of the triangle below:
