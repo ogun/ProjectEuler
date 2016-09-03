@@ -437,6 +437,15 @@ def problem19():
     return return_value
 
 
+def problem20():
+    """ Factorial digit sum
+    Find the sum of the digits in the number 100!
+
+     """
+
+    return mathhelper.sum_digits(math.factorial(100))
+
+
 def problem67():
     """ Maximum path sum II
      Find the maximum total from top to bottom of the triangle below:
