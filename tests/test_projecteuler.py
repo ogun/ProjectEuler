@@ -72,6 +72,9 @@ class TestProjectEuler(unittest.TestCase):
     def test_problem24(self):
         self.assertEqual(projecteuler.problem24(), 2783915460)
 
+    def test_problem25(self):
+        self.assertEqual(projecteuler.problem25(), 4782)
+
     def test_problem67(self):
         self.assertEqual(projecteuler.problem67(), 7273)
 

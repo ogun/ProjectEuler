@@ -1,6 +1,5 @@
 ﻿"""Matematik işlemleri için yardımcı modül"""
 import math
-import sys
 import itertools
 
 
@@ -37,9 +36,9 @@ def factor_count(number, proper=False):
 
 def fibonacci_number_list(max_number):
     """Verilen sayıya kadar olan fibonacci sayılarını listeler
-    max_number olarak None verilirse sys.maxsize'a kadar listeler"""
+    max_number olarak None verilirse float('inf')'e kadar listeler"""
     current_number, next_number = 1, 1
-    limit = sys.maxsize if max_number is None else int(max_number) + 1
+    limit = float('inf') if max_number is None else int(max_number) + 1
     while current_number < limit:
         yield current_number
         current_number, next_number = next_number, current_number + next_number
@@ -153,8 +152,8 @@ def prime_divisor_list(number, with_group=True):
 
 def prime_number_list(max_number):
     """Verilen sayıya kadar olan asal sayıları listeler
-    max_number olarak None verilirse sys.maxsize'a kadar listeler"""
-    limit = sys.maxsize if max_number is None else int(max_number) + 1
+    max_number olarak None verilirse float('inf')'e kadar listeler"""
+    limit = float('inf') if max_number is None else int(max_number) + 1
     for number in range(2, limit):
         if is_prime(number):
             yield number
@@ -203,8 +202,8 @@ def sum_factors(number, proper=False):
 
 def triangle_number_list(max_number):
     """Verilen sayıya kadar olan triangle sayıları listeler
-    max_number olarak None verilirse sys.maxsize'a kadar listeler"""
-    limit = sys.maxsize if max_number is None else int(max_number) + 1
+    max_number olarak None verilirse float('inf')'e kadar listeler"""
+    limit = float('inf') if max_number is None else int(max_number) + 1
     for number in range(1, limit):
         return_value = int(number * (number + 1) / 2)
         if return_value >= limit:

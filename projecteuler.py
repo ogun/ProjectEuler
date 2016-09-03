@@ -489,6 +489,16 @@ def problem24():
     return int("".join(sorted_permutations[999999]))
 
 
+def problem25():
+    """ 1000-digit Fibonacci number
+    What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
+
+    """
+    for index, fibonacci in enumerate(mathhelper.fibonacci_number_list(None)):
+        if len(str(fibonacci)) == 1000:
+            return index + 1
+
+
 def problem67():
     """ Maximum path sum II
      Find the maximum total from top to bottom of the triangle below:
