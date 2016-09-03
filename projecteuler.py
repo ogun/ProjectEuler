@@ -384,7 +384,7 @@ def problem18():
     """ Maximum path sum I
      Find the maximum total from top to bottom of the triangle below:
 
-     """
+    """
     data = ("75\n"
             "95 64\n"
             "17 47 82\n"
@@ -425,7 +425,7 @@ def problem19():
      How many Sundays fell on the first of the month during the twentieth
      century (1 Jan 1901 to 31 Dec 2000)?
 
-     """
+    """
     start_date = datetime.datetime.strptime("01/01/1901", "%d/%m/%Y")
     end_date = datetime.datetime.strptime("31/12/2000", "%d/%m/%Y")
 
@@ -441,8 +441,7 @@ def problem20():
     """ Factorial digit sum
     Find the sum of the digits in the number 100!
 
-     """
-
+    """
     return mathhelper.sum_digits(math.factorial(100))
 
 
@@ -450,9 +449,23 @@ def problem21():
     """ Amicable numbers
     Evaluate the sum of all the amicable numbers under 10000.
 
-     """
-
+    """
     return sum(x for x in range(1, 10000) if mathhelper.is_amicable(x))
+
+
+def problem22():
+    """ Names scores
+    For example, when the list is sorted into alphabetical order, COLIN,
+    which is worth 3 + 15 + 12 + 9 + 14 = 53, is the 938th name in the list.
+    So, COLIN would obtain a score of 938 × 53 = 49714.
+
+    What is the total of all the name scores in the file?
+    """
+    with open(os.path.join(os.path.dirname(__file__), "data", "p022_names.txt"), 'r') as file:
+        data = file.read()
+
+    names = sorted(name.strip("\"") for name in data.split(","))
+    return sum(sum(ord(c) - 64 for c in list(name)) * (idx + 1) for idx, name in enumerate(names))
 
 
 def problem67():
