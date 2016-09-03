@@ -468,6 +468,17 @@ def problem22():
     return sum(sum(ord(c) - 64 for c in list(name)) * (idx + 1) for idx, name in enumerate(names))
 
 
+def problem23():
+    """ Non-abundant sums
+    Find the sum of all the positive integers which cannot be written
+    as the sum of two abundant numbers.
+
+    """
+    abundants = [x for x in range(1, 28124) if mathhelper.sum_factors(x, proper=True) > x]
+    abundants_sum = {x + y for (x, y) in itertools.product(abundants, abundants) if x + y < 28124}
+    return sum(x for x in range(1, 28124) if x not in abundants_sum)
+
+
 def problem67():
     """ Maximum path sum II
      Find the maximum total from top to bottom of the triangle below:
