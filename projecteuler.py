@@ -446,6 +446,15 @@ def problem20():
     return mathhelper.sum_digits(math.factorial(100))
 
 
+def problem21():
+    """ Amicable numbers
+    Evaluate the sum of all the amicable numbers under 10000.
+
+     """
+
+    return sum(x for x in range(1, 10000) if mathhelper.is_amicable(x))
+
+
 def problem67():
     """ Maximum path sum II
      Find the maximum total from top to bottom of the triangle below:

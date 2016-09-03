@@ -23,6 +23,19 @@ class TestMathHelper(unittest.TestCase):
         self.assertEqual(mathhelper.factor_count(6), 4)
         self.assertEqual(mathhelper.factor_count(21), 4)
         self.assertEqual(mathhelper.factor_count(28), 6)
+        self.assertEqual(mathhelper.factor_count(-5, True), 1)
+        self.assertEqual(mathhelper.factor_count(-4, True), 2)
+        self.assertEqual(mathhelper.factor_count(-3, True), 1)
+        self.assertEqual(mathhelper.factor_count(-2, True), 1)
+        self.assertEqual(mathhelper.factor_count(-1, True), 0)
+        self.assertEqual(mathhelper.factor_count(0, True), 0)
+        self.assertEqual(mathhelper.factor_count(1, True), 0)
+        self.assertEqual(mathhelper.factor_count(2, True), 1)
+        self.assertEqual(mathhelper.factor_count(4, True), 2)
+        self.assertEqual(mathhelper.factor_count(5, True), 1)
+        self.assertEqual(mathhelper.factor_count(6, True), 3)
+        self.assertEqual(mathhelper.factor_count(21, True), 3)
+        self.assertEqual(mathhelper.factor_count(28, True), 5)
 
     def test_fibonacci_number_list(self):
         self.assertEqual(list(mathhelper.fibonacci_number_list(-5)), [])
@@ -48,6 +61,17 @@ class TestMathHelper(unittest.TestCase):
         self.assertEqual(mathhelper.greatest_common_divisor(-5, 10, 0), 5)
         self.assertEqual(mathhelper.greatest_common_divisor(1, 2, 4, 8, 16), 1)
         self.assertEqual(mathhelper.greatest_common_divisor(2, 4, 8, 16, 32), 2)
+
+    def test_is_amicable_number(self):
+        self.assertEqual(mathhelper.is_amicable(-1), False)
+        self.assertEqual(mathhelper.is_amicable(0), False)
+        self.assertEqual(mathhelper.is_amicable(1), False)
+        self.assertEqual(mathhelper.is_amicable(11), False)
+        self.assertEqual(mathhelper.is_amicable(13), False)
+        self.assertEqual(mathhelper.is_amicable(220), True)
+        self.assertEqual(mathhelper.is_amicable(284), True)
+        self.assertEqual(mathhelper.is_amicable(1100), False)
+        self.assertEqual(mathhelper.is_amicable(1184), True)
 
     def test_is_palindromic(self):
         self.assertEqual(mathhelper.is_palindromic(-1), True)
@@ -102,6 +126,18 @@ class TestMathHelper(unittest.TestCase):
         self.assertEqual(list(mathhelper.prime_divisor_list(6)), [[2], [3]])
         self.assertEqual(list(mathhelper.prime_divisor_list(12)), [[2, 2], [3]])
         self.assertEqual(list(mathhelper.prime_divisor_list(30)), [[2], [3], [5]])
+        self.assertEqual(list(mathhelper.prime_divisor_list(-5, False)), [5])
+        self.assertEqual(list(mathhelper.prime_divisor_list(-4, False)), [2, 2])
+        self.assertEqual(list(mathhelper.prime_divisor_list(-1, False)), [])
+        self.assertEqual(list(mathhelper.prime_divisor_list(0, False)), [])
+        self.assertEqual(list(mathhelper.prime_divisor_list(1, False)), [])
+        self.assertEqual(list(mathhelper.prime_divisor_list(2, False)), [2])
+        self.assertEqual(list(mathhelper.prime_divisor_list(3, False)), [3])
+        self.assertEqual(list(mathhelper.prime_divisor_list(4, False)), [2, 2])
+        self.assertEqual(list(mathhelper.prime_divisor_list(5, False)), [5])
+        self.assertEqual(list(mathhelper.prime_divisor_list(6, False)), [2, 3])
+        self.assertEqual(list(mathhelper.prime_divisor_list(12, False)), [2, 2, 3])
+        self.assertEqual(list(mathhelper.prime_divisor_list(30, False)), [2, 3, 5])
 
     def test_prime_number_list(self):
         self.assertEqual(list(mathhelper.prime_number_list(-5)), [])
@@ -122,6 +158,30 @@ class TestMathHelper(unittest.TestCase):
         self.assertEqual(mathhelper.sum_digits(867), 21)
         self.assertEqual(mathhelper.sum_digits(99000009), 27)
 
+    def test_sum_factors(self):
+        self.assertEqual(mathhelper.sum_factors(-1), 1)
+        self.assertEqual(mathhelper.sum_factors(0), 0)
+        self.assertEqual(mathhelper.sum_factors(1), 1)
+        self.assertEqual(mathhelper.sum_factors(2), 3)
+        self.assertEqual(mathhelper.sum_factors(3), 4)
+        self.assertEqual(mathhelper.sum_factors(4), 7)
+        self.assertEqual(mathhelper.sum_factors(5), 6)
+        self.assertEqual(mathhelper.sum_factors(6), 12)
+        self.assertEqual(mathhelper.sum_factors(10), 18)
+        self.assertEqual(mathhelper.sum_factors(12), 28)
+        self.assertEqual(mathhelper.sum_factors(25), 31)
+        self.assertEqual(mathhelper.sum_factors(-1, True), 0)
+        self.assertEqual(mathhelper.sum_factors(0, True), 0)
+        self.assertEqual(mathhelper.sum_factors(1, True), 0)
+        self.assertEqual(mathhelper.sum_factors(2, True), 1)
+        self.assertEqual(mathhelper.sum_factors(3, True), 1)
+        self.assertEqual(mathhelper.sum_factors(4, True), 3)
+        self.assertEqual(mathhelper.sum_factors(5, True), 1)
+        self.assertEqual(mathhelper.sum_factors(6, True), 6)
+        self.assertEqual(mathhelper.sum_factors(10, True), 8)
+        self.assertEqual(mathhelper.sum_factors(12, True), 16)
+        self.assertEqual(mathhelper.sum_factors(25, True), 6)
+
     def test_triangle_number_list(self):
         self.assertEqual(list(mathhelper.triangle_number_list(-5)), [])
         self.assertEqual(list(mathhelper.triangle_number_list(-3)), [])
@@ -137,6 +197,7 @@ class TestMathHelper(unittest.TestCase):
         self.assertEqual(list(mathhelper.triangle_number_list(28)), [1, 3, 6, 10, 15, 21, 28])
         self.assertEqual(list(mathhelper.triangle_number_list(29)), [1, 3, 6, 10, 15, 21, 28])
         self.assertEqual(list(mathhelper.triangle_number_list(39)), [1, 3, 6, 10, 15, 21, 28, 36])
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,6 +1,7 @@
 ﻿"""Matematik işlemleri için yardımcı modül"""
 import math
 import sys
+import itertools
 
 
 def collatz_sequence_chain_count(number):
@@ -19,7 +20,7 @@ def collatz_sequence_chain_count(number):
     return chain_count
 
 
-def factor_count(number):
+def factor_count(number, proper=False):
     """Verilen sayının toplam çarpan sayısını belirler"""
     if number == 0:
         return 0
@@ -27,6 +28,10 @@ def factor_count(number):
     return_value = 1
     for prime_divisors in prime_divisor_list(number):
         return_value *= len(prime_divisors) + 1
+
+    if proper:
+        return_value -= 1
+
     return return_value
 
 
@@ -57,6 +62,13 @@ def greatest_common_divisor(*numbers):
         return_value = math.gcd(return_value, number)
 
     return return_value
+
+
+def is_amicable(number):
+    """Verilen sayının amicable olup olmadığını belirler"""
+    factors = sum_factors(number, proper=True)
+
+    return number != factors and number == sum_factors(factors, proper=True)
 
 
 def is_palindromic(number):
@@ -107,7 +119,7 @@ def least_common_multiple(*numbers):
     return return_value
 
 
-def prime_divisor_list(number):
+def prime_divisor_list(number, with_group=True):
     """Verilen sayının asal çarpanlarını listeler
     Örn: 12 için [[2, 2], [3]]"""
     number = abs(number)
@@ -116,16 +128,23 @@ def prime_divisor_list(number):
         return []
 
     if is_prime(number):
-        return [[number]]
+        if with_group:
+            return [[number]]
+        else:
+            return [number]
 
     return_value = []
     limit = int(number / 2) + 1
     for divisor in prime_number_list(limit):
-        prime_divisor = []
+        if with_group:
+            prime_divisor = []
         while number % divisor == 0:
-            prime_divisor.append(divisor)
+            if with_group:
+                prime_divisor.append(divisor)
+            else:
+                return_value.append(divisor)
             number = number / divisor
-        if len(prime_divisor) > 0:
+        if with_group and len(prime_divisor) > 0:
             return_value.append(prime_divisor)
 
         if number == 1:
@@ -141,6 +160,14 @@ def prime_number_list(max_number):
             yield number
 
 
+def product(number_list):
+    """Verilen sayı listesinin çarpımını belirler"""
+    return_value = 1
+    for number in number_list:
+        return_value *= number
+    return return_value
+
+
 def sum_digits(number):
     """Verilen sayının rakamlarının toplamını belirler"""
     number = abs(number)
@@ -150,6 +177,28 @@ def sum_digits(number):
         return_value += number % 10
         number //= 10
     return return_value
+
+
+def sum_factors(number, proper=False):
+    """Verilan sayının çarpanlarının toplamını belirler"""
+
+    if number == 0:
+        return 0
+
+    if number == 1 and proper:
+        return 0
+
+    prime_divisors = prime_divisor_list(number, with_group=False)
+
+    sum_products = 1
+    for element_count in range(1, len(prime_divisors) + 1):
+        sum_products += sum(
+            product(x) for x in set(itertools.combinations(prime_divisors, element_count)))
+
+    if proper:
+        sum_products -= abs(number)
+
+    return sum_products
 
 
 def triangle_number_list(max_number):
