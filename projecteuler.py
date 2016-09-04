@@ -499,6 +499,16 @@ def problem25():
             return index + 1
 
 
+def problem28():
+    """ Number spiral diagonals
+    What is the sum of the numbers on the diagonals
+    in a 1001 by 1001 spiral formed in the same way?
+
+    """
+    # Sum corners: (4 * (x ** 2)) - (6 * (x - 1))
+    return 1 + sum((4 * (x ** 2)) - (6 * (x - 1)) for x in range(3, 1002, 2))
+
+
 def problem67():
     """ Maximum path sum II
      Find the maximum total from top to bottom of the triangle below:
