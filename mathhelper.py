@@ -19,6 +19,18 @@ def collatz_sequence_chain_count(number):
     return chain_count
 
 
+def create_number(number_list):
+    """Verilen diziden oluşacak sayıyı belirler"""
+
+    if len(number_list) == 0:
+        return 0
+
+    return_value = 0
+    for index, step in enumerate(range(len(number_list), 0, -1)):
+        return_value += int(number_list[index]) * (10 ** (step - 1))
+    return return_value
+
+
 def factor_count(number, proper=False):
     """Verilen sayının toplam çarpan sayısını belirler"""
     if number == 0:
@@ -198,6 +210,27 @@ def sum_factors(number, proper=False):
         sum_products -= abs(number)
 
     return sum_products
+
+
+def sum_powers(number_list, power):
+    """Verilen dizideki sayıların verilen üsse göre toplamını belirler"""
+
+    if len(number_list) == 0:
+        return 0
+
+    return_value = 0
+    for index in range(0, len(number_list)):
+        return_value += int(number_list[index]) ** power
+    return return_value
+
+
+def sum_powers_of_digits(number, power):
+    """Verilen sayıya ait rakamların verilen üsse göre toplamını belirler"""
+    return_value = 0
+    while number:
+        return_value += (number % 10) ** power
+        number //= 10
+    return return_value
 
 
 def triangle_number_list(max_number):

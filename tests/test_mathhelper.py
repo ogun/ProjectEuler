@@ -9,6 +9,12 @@ class TestMathHelper(unittest.TestCase):
         self.assertEqual(mathhelper.collatz_sequence_chain_count(3), 8)
         self.assertEqual(mathhelper.collatz_sequence_chain_count(13), 10)
 
+    def test_create_number(self):
+        self.assertEqual(mathhelper.create_number(list("123")), 123)
+        self.assertEqual(mathhelper.create_number(list("0123")), 123)
+        self.assertEqual(mathhelper.create_number(list("9876")), 9876)
+        self.assertEqual(mathhelper.create_number([4, 5, 6, 7, 8, 9]), 456789)
+
     def test_factor_count(self):
         self.assertEqual(mathhelper.factor_count(-5), 2)
         self.assertEqual(mathhelper.factor_count(-4), 3)
@@ -181,6 +187,22 @@ class TestMathHelper(unittest.TestCase):
         self.assertEqual(mathhelper.sum_factors(10, True), 8)
         self.assertEqual(mathhelper.sum_factors(12, True), 16)
         self.assertEqual(mathhelper.sum_factors(25, True), 6)
+
+    def test_sum_powers(self):
+        self.assertEqual(mathhelper.sum_powers([1, 2, 3], 3), 36)
+        self.assertEqual(mathhelper.sum_powers([], 3), 0)
+        self.assertEqual(mathhelper.sum_powers([1], 27), 1)
+        self.assertEqual(mathhelper.sum_powers(list("345"), 2), 50)
+        self.assertEqual(mathhelper.sum_powers([1, 2, 3, 4, 5], 0), 5)
+        self.assertEqual(mathhelper.sum_powers([1, 2, 3, 4, 5], 1), 15)
+
+    def test_sum_powers_of_digits(self):
+        self.assertEqual(mathhelper.sum_powers_of_digits(123, 3), 36)
+        self.assertEqual(mathhelper.sum_powers_of_digits(0, 3), 0)
+        self.assertEqual(mathhelper.sum_powers_of_digits(1, 27), 1)
+        self.assertEqual(mathhelper.sum_powers_of_digits(345, 2), 50)
+        self.assertEqual(mathhelper.sum_powers_of_digits(12345, 0), 5)
+        self.assertEqual(mathhelper.sum_powers_of_digits(12345, 1), 15)
 
     def test_triangle_number_list(self):
         self.assertEqual(list(mathhelper.triangle_number_list(-5)), [])

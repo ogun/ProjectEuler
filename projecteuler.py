@@ -517,6 +517,14 @@ def problem29():
     return len({x ** y for (x, y) in itertools.product(range(2, 101), range(2, 101))})
 
 
+def problem30():
+    """ Digit fifth powers
+    Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
+
+    """
+    return sum(x for x in range(2, (9 ** 6) + 1) if x == mathhelper.sum_powers_of_digits(x, 5))
+
+
 def problem67():
     """ Maximum path sum II
      Find the maximum total from top to bottom of the triangle below:
