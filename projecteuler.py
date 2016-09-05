@@ -3,6 +3,7 @@ import math
 import os
 import itertools
 import datetime
+import collections
 import mathhelper
 
 
@@ -552,6 +553,34 @@ def problem31():
                                 if total == 200:
                                     return_value += 1
                                     break
+    return return_value
+
+
+def problem35():
+    """ Circular primes
+    How many circular primes are there below one million?
+
+    """
+    return_value = 0
+    for prime in mathhelper.prime_number_list(999999):
+        prime_digits = list(str(prime))
+
+        rotate_list = collections.deque(prime_digits)
+        rotate_list_length = len(rotate_list)
+        if rotate_list_length == 1:
+            return_value += 1
+            continue
+
+        if len({"0", "2", "4", "5", "6", "8"}.intersection(prime_digits)) > 0:
+            continue
+
+        for rotate in range(1, rotate_list_length):
+            rotate_list.rotate(1)
+            if not mathhelper.is_prime(mathhelper.create_number(rotate_list)):
+                break
+            if rotate + 1 == rotate_list_length:
+                return_value += 1
+
     return return_value
 
 
