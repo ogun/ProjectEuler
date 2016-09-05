@@ -584,6 +584,15 @@ def problem35():
     return return_value
 
 
+def problem36():
+    """ Double-base palindromes
+    Find the sum of all numbers, less than one million, which are palindromic in base 10 and base 2.
+
+    """
+    return sum(x for x in range(1, 1000000) if
+               mathhelper.is_palindromic(x) and mathhelper.is_palindromic(int(bin(x)[2:])))
+
+
 def problem67():
     """ Maximum path sum II
      Find the maximum total from top to bottom of the triangle below:
