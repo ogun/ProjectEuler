@@ -166,9 +166,11 @@ def prime_number_list(max_number):
     """Verilen sayıya kadar olan asal sayıları listeler
     max_number olarak None verilirse float('inf')'e kadar listeler"""
     limit = float('inf') if max_number is None else int(max_number) + 1
-    for number in range(2, limit):
+    number = 2
+    while number < limit:
         if is_prime(number):
             yield number
+        number += 1
 
 
 def product(number_list):
@@ -237,8 +239,10 @@ def triangle_number_list(max_number):
     """Verilen sayıya kadar olan triangle sayıları listeler
     max_number olarak None verilirse float('inf')'e kadar listeler"""
     limit = float('inf') if max_number is None else int(max_number) + 1
-    for number in range(1, limit):
+    number = 1
+    while number < limit:
         return_value = int(number * (number + 1) / 2)
         if return_value >= limit:
             break
         yield return_value
+        number += 1

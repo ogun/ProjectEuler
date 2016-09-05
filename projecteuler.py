@@ -593,6 +593,32 @@ def problem36():
                mathhelper.is_palindromic(x) and mathhelper.is_palindromic(int(bin(x)[2:])))
 
 
+def problem37():
+    """ Truncatable primes
+    Find the sum of the only eleven primes
+    that are both truncatable from left to right and right to left.
+
+    """
+    found_item = 0
+    return_value = 0
+    for prime in mathhelper.prime_number_list(None):
+        if prime < 10:
+            continue
+
+        prime_text = str(prime)
+        for truncate in range(1, len(prime_text)):
+            left_part = int(prime_text[:(-1 * truncate)])
+            right_part = int(prime_text[truncate:])
+            if not mathhelper.is_prime(left_part) or not mathhelper.is_prime(right_part):
+                break
+            if truncate + 1 == len(prime_text):
+                return_value += prime
+                found_item += 1
+
+        if found_item == 11:
+            return return_value
+
+
 def problem67():
     """ Maximum path sum II
      Find the maximum total from top to bottom of the triangle below:
