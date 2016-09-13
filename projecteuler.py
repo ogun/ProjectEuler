@@ -656,6 +656,35 @@ def problem43():
     return return_value
 
 
+def problem47():
+    """ Distinct primes factors
+    Find the first four consecutive integers to have four distinct prime factors.
+    What is the first of these numbers?
+
+    """
+    number = 2 * 3 * 5 * 7
+    while True:
+        first_number = number
+        second_number = number + 1
+        third_number = number + 2
+        fourth_number = number + 3
+
+        if len(mathhelper.prime_divisor_list(fourth_number)) != 4:
+            number += 4
+            continue
+        if len(mathhelper.prime_divisor_list(third_number)) != 4:
+            number += 3
+            continue
+        if len(mathhelper.prime_divisor_list(second_number)) != 4:
+            number += 2
+            continue
+        if len(mathhelper.prime_divisor_list(first_number)) != 4:
+            number += 1
+            continue
+
+        return first_number
+
+
 def problem48():
     """ Self powers
     Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000.
