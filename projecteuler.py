@@ -23,7 +23,7 @@ def problem2():
 
     """
     return_value = 0
-    for number in mathhelper.fibonacci_number_list(4000000):
+    for number in mathhelper.fibonacci_list(4000000):
         if number % 2 == 0:
             return_value += number
     return return_value
@@ -236,7 +236,7 @@ def problem12():
     What is the value of the first triangle number to have over five hundred divisors?
 
     """
-    for triangle_number in mathhelper.triangle_number_list(None):
+    for triangle_number in mathhelper.triangle_list(None):
         if mathhelper.factor_count(triangle_number) > 500:
             return triangle_number
 
@@ -495,7 +495,7 @@ def problem25():
     What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
 
     """
-    for index, fibonacci in enumerate(mathhelper.fibonacci_number_list(None)):
+    for index, fibonacci in enumerate(mathhelper.fibonacci_list(None)):
         if len(str(fibonacci)) == 1000:
             return index + 1
 

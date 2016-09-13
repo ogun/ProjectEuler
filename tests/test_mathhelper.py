@@ -43,15 +43,15 @@ class TestMathHelper(unittest.TestCase):
         self.assertEqual(mathhelper.factor_count(21, True), 3)
         self.assertEqual(mathhelper.factor_count(28, True), 5)
 
-    def test_fibonacci_number_list(self):
-        self.assertEqual(list(mathhelper.fibonacci_number_list(-5)), [])
-        self.assertEqual(list(mathhelper.fibonacci_number_list(-1)), [])
-        self.assertEqual(list(mathhelper.fibonacci_number_list(0)), [])
-        self.assertEqual(list(mathhelper.fibonacci_number_list(1)), [1, 1])
-        self.assertEqual(list(mathhelper.fibonacci_number_list(2)), [1, 1, 2])
-        self.assertEqual(list(mathhelper.fibonacci_number_list(3)), [1, 1, 2, 3])
-        self.assertEqual(list(mathhelper.fibonacci_number_list(10)), [1, 1, 2, 3, 5, 8])
-        self.assertEqual(list(mathhelper.fibonacci_number_list(144)),
+    def test_fibonacci_list(self):
+        self.assertEqual(list(mathhelper.fibonacci_list(-5)), [])
+        self.assertEqual(list(mathhelper.fibonacci_list(-1)), [])
+        self.assertEqual(list(mathhelper.fibonacci_list(0)), [])
+        self.assertEqual(list(mathhelper.fibonacci_list(1)), [1, 1])
+        self.assertEqual(list(mathhelper.fibonacci_list(2)), [1, 1, 2])
+        self.assertEqual(list(mathhelper.fibonacci_list(3)), [1, 1, 2, 3])
+        self.assertEqual(list(mathhelper.fibonacci_list(10)), [1, 1, 2, 3, 5, 8])
+        self.assertEqual(list(mathhelper.fibonacci_list(144)),
                          [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144])
 
     def test_greatest_common_divisor(self):
@@ -163,7 +163,7 @@ class TestMathHelper(unittest.TestCase):
         self.assertEqual(list(mathhelper.prime_divisor_list(12, False)), [2, 2, 3])
         self.assertEqual(list(mathhelper.prime_divisor_list(30, False)), [2, 3, 5])
 
-    def test_prime_number_list(self):
+    def test_prime_list(self):
         self.assertEqual(list(mathhelper.prime_list(-5)), [])
         self.assertEqual(list(mathhelper.prime_list(-1)), [])
         self.assertEqual(list(mathhelper.prime_list(0)), [])
@@ -244,21 +244,21 @@ class TestMathHelper(unittest.TestCase):
         self.assertEqual(mathhelper.sum_powers_of_digits(12345, 0), 5)
         self.assertEqual(mathhelper.sum_powers_of_digits(12345, 1), 15)
 
-    def test_triangle_number_list(self):
-        self.assertEqual(list(mathhelper.triangle_number_list(-5)), [])
-        self.assertEqual(list(mathhelper.triangle_number_list(-3)), [])
-        self.assertEqual(list(mathhelper.triangle_number_list(-1)), [])
-        self.assertEqual(list(mathhelper.triangle_number_list(-0)), [])
-        self.assertEqual(list(mathhelper.triangle_number_list(1)), [1])
-        self.assertEqual(list(mathhelper.triangle_number_list(2)), [1])
-        self.assertEqual(list(mathhelper.triangle_number_list(3)), [1, 3])
-        self.assertEqual(list(mathhelper.triangle_number_list(4)), [1, 3])
-        self.assertEqual(list(mathhelper.triangle_number_list(5)), [1, 3])
-        self.assertEqual(list(mathhelper.triangle_number_list(6)), [1, 3, 6])
-        self.assertEqual(list(mathhelper.triangle_number_list(27)), [1, 3, 6, 10, 15, 21])
-        self.assertEqual(list(mathhelper.triangle_number_list(28)), [1, 3, 6, 10, 15, 21, 28])
-        self.assertEqual(list(mathhelper.triangle_number_list(29)), [1, 3, 6, 10, 15, 21, 28])
-        self.assertEqual(list(mathhelper.triangle_number_list(39)), [1, 3, 6, 10, 15, 21, 28, 36])
+    def test_triangle_list(self):
+        self.assertEqual(list(mathhelper.triangle_list(-5)), [])
+        self.assertEqual(list(mathhelper.triangle_list(-3)), [])
+        self.assertEqual(list(mathhelper.triangle_list(-1)), [])
+        self.assertEqual(list(mathhelper.triangle_list(-0)), [])
+        self.assertEqual(list(mathhelper.triangle_list(1)), [1])
+        self.assertEqual(list(mathhelper.triangle_list(2)), [1])
+        self.assertEqual(list(mathhelper.triangle_list(3)), [1, 3])
+        self.assertEqual(list(mathhelper.triangle_list(4)), [1, 3])
+        self.assertEqual(list(mathhelper.triangle_list(5)), [1, 3])
+        self.assertEqual(list(mathhelper.triangle_list(6)), [1, 3, 6])
+        self.assertEqual(list(mathhelper.triangle_list(27)), [1, 3, 6, 10, 15, 21])
+        self.assertEqual(list(mathhelper.triangle_list(28)), [1, 3, 6, 10, 15, 21, 28])
+        self.assertEqual(list(mathhelper.triangle_list(29)), [1, 3, 6, 10, 15, 21, 28])
+        self.assertEqual(list(mathhelper.triangle_list(39)), [1, 3, 6, 10, 15, 21, 28, 36])
 
 
 if __name__ == '__main__':

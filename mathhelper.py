@@ -46,7 +46,7 @@ def factor_count(number, proper=False):
     return return_value
 
 
-def fibonacci_number_list(max_number):
+def fibonacci_list(max_number):
     """Verilen sayıya kadar olan fibonacci sayılarını listeler
     max_number olarak None verilirse float('inf')'e kadar listeler"""
     current_number, next_number = 1, 1
@@ -294,7 +294,7 @@ def sum_powers_of_digits(number, power):
     return return_value
 
 
-def triangle_number_list(max_number):
+def triangle_list(max_number):
     """Verilen sayıya kadar olan triangle sayıları listeler
     max_number olarak None verilirse float('inf')'e kadar listeler"""
     limit = float('inf') if max_number is None else int(max_number) + 1
