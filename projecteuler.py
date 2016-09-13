@@ -656,6 +656,29 @@ def problem43():
     return return_value
 
 
+def problem50():
+    """ Consecutive prime sum
+    Which prime, below one-million, can be written as the sum of the most consecutive primes?
+
+    """
+
+    max_index = 0
+    biggest_prime = 0
+    for start in mathhelper.prime_list(1000000, reverse=True):
+        sum_primes = 0
+        for index, prime in enumerate(mathhelper.prime_list(start, reverse=True)):
+            if sum_primes > 1000000:
+                break
+
+            sum_primes += prime
+
+            if max_index < index and mathhelper.is_prime(sum_primes):
+                max_index = index
+                biggest_prime = sum_primes
+
+    return biggest_prime
+
+
 def problem67():
     """ Maximum path sum II
      Find the maximum total from top to bottom of the triangle below:
