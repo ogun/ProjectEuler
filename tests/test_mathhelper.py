@@ -107,6 +107,16 @@ class TestMathHelper(unittest.TestCase):
         self.assertEqual(mathhelper.is_pandigital(1999991), False)
         self.assertEqual(mathhelper.is_pandigital(234667556), False)
         self.assertEqual(mathhelper.is_pandigital(234167589), True)
+        self.assertEqual(mathhelper.is_pandigital(-1, start=0), False)
+        self.assertEqual(mathhelper.is_pandigital(0, start=0), True)
+        self.assertEqual(mathhelper.is_pandigital(1, start=0), False)
+        self.assertEqual(mathhelper.is_pandigital(10, start=0), True)
+        self.assertEqual(mathhelper.is_pandigital(11, start=0), False)
+        self.assertEqual(mathhelper.is_pandigital(12, start=0), False)
+        self.assertEqual(mathhelper.is_pandigital(13, start=0), False)
+        self.assertEqual(mathhelper.is_pandigital(21, start=0), False)
+        self.assertEqual(mathhelper.is_pandigital(201, start=0), True)
+        self.assertEqual(mathhelper.is_pandigital(131, start=0), False)
 
     def test_is_prime(self):
         self.assertEqual(mathhelper.is_prime(-5), False)

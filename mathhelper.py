@@ -88,24 +88,27 @@ def is_palindromic(number):
     return str(number)[::-1] == str(number)
 
 
-def is_pandigital(number):
+def is_pandigital(number, start=1):
     """Verilen sayının pandigital olup olmadığını belirler"""
-
-    if number == 0:
-        return False
 
     number = abs(number)
 
+    if number < start:
+        return False
+
     digits = []
+    if number == 0:
+        digits.append(0)
+
     while number:
         digit = number % 10
-        if digit == 0 or digit in digits:
+        if digit < start or digit in digits:
             return False
         digits.append(digit)
 
         number //= 10
 
-    if sorted(digits) == list(range(1, len(digits) + 1)):
+    if sorted(digits) == list(range(start, len(digits) + start)):
         return True
 
     return False

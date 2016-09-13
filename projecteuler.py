@@ -630,6 +630,32 @@ def problem41():
             return prime
 
 
+def problem43():
+    """ Sub-string divisibility
+    Find the sum of all 0 to 9 pandigital numbers with this property.
+
+    """
+
+    dividers = [1, 2, 3, 5, 7, 11, 13, 17]
+    return_value = 0
+    for permutation in itertools.permutations([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10):
+        if permutation[0] == 0:
+            continue
+
+        divisibility = True
+        for start in range(1, 8):
+            three_digits = permutation[start:start + 3]
+            number = mathhelper.create_number(three_digits)
+            if number % dividers[start] != 0:
+                divisibility = False
+                break
+
+        if divisibility:
+            return_value += mathhelper.create_number(permutation)
+
+    return return_value
+
+
 def problem67():
     """ Maximum path sum II
      Find the maximum total from top to bottom of the triangle below:
