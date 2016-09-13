@@ -88,6 +88,29 @@ def is_palindromic(number):
     return str(number)[::-1] == str(number)
 
 
+def is_pandigital(number):
+    """Verilen sayının pandigital olup olmadığını belirler"""
+
+    if number == 0:
+        return False
+
+    number = abs(number)
+
+    digits = []
+    while number:
+        digit = number % 10
+        if digit == 0 or digit in digits:
+            return False
+        digits.append(digit)
+
+        number //= 10
+
+    if sorted(digits) == list(range(1, len(digits) + 1)):
+        return True
+
+    return False
+
+
 def is_prime(number):
     """Verilen sayının asal olup olmadığını belirler"""
     return_value = True
@@ -146,7 +169,7 @@ def prime_divisor_list(number, with_group=True):
 
     return_value = []
     limit = int(number / 2) + 1
-    for divisor in prime_number_list(limit):
+    for divisor in prime_list(limit):
         if with_group:
             prime_divisor = []
         while number % divisor == 0:
@@ -162,15 +185,51 @@ def prime_divisor_list(number, with_group=True):
             return return_value
 
 
-def prime_number_list(max_number):
+def prime_list(max_number, reverse=False):
     """Verilen sayıya kadar olan asal sayıları listeler
     max_number olarak None verilirse float('inf')'e kadar listeler"""
     limit = float('inf') if max_number is None else int(max_number) + 1
-    number = 2
-    while number < limit:
-        if is_prime(number):
-            yield number
-        number += 1
+    number = max_number if reverse else 6
+    if reverse:
+        if number > 6:
+            if is_prime(number):
+                yield number
+
+            number -= number % 6
+
+        while number > 5:
+            bigger = number + 1
+            if bigger < max_number and is_prime(bigger):
+                yield bigger
+
+            lower = number - 1
+            if is_prime(lower):
+                yield lower
+
+            if number == 6:
+                break
+            number -= 6
+
+        if number >= 3:
+            yield 3
+
+        if number >= 2:
+            yield 2
+    else:
+        if limit > 2:
+            yield 2
+        if limit > 3:
+            yield 3
+
+        while number <= limit:
+            lower = number - 1
+            if is_prime(lower):
+                yield lower
+
+            bigger = number + 1
+            if bigger < limit and is_prime(bigger):
+                yield bigger
+            number += 6
 
 
 def product(number_list):
@@ -240,7 +299,7 @@ def triangle_number_list(max_number):
     max_number olarak None verilirse float('inf')'e kadar listeler"""
     limit = float('inf') if max_number is None else int(max_number) + 1
     number = 1
-    while number < limit:
+    while number <= limit:
         return_value = int(number * (number + 1) / 2)
         if return_value >= limit:
             break

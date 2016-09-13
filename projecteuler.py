@@ -562,7 +562,7 @@ def problem35():
 
     """
     return_value = 0
-    for prime in mathhelper.prime_number_list(999999):
+    for prime in mathhelper.prime_list(999999):
         prime_digits = list(str(prime))
 
         rotate_list = collections.deque(prime_digits)
@@ -578,6 +578,7 @@ def problem35():
             rotate_list.rotate(1)
             if not mathhelper.is_prime(mathhelper.create_number(rotate_list)):
                 break
+
             if rotate + 1 == rotate_list_length:
                 return_value += 1
 
@@ -601,7 +602,7 @@ def problem37():
     """
     found_item = 0
     return_value = 0
-    for prime in mathhelper.prime_number_list(None):
+    for prime in mathhelper.prime_list(None):
         if prime < 10:
             continue
 
@@ -617,6 +618,16 @@ def problem37():
 
         if found_item == 11:
             return return_value
+
+
+def problem41():
+    """ Pandigital prime
+    What is the largest n-digit pandigital prime that exists?
+
+    """
+    for prime in mathhelper.prime_list(7654321, reverse=True):
+        if mathhelper.is_pandigital(prime):
+            return prime
 
 
 def problem67():
