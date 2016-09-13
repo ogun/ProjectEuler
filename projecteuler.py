@@ -656,6 +656,28 @@ def problem43():
     return return_value
 
 
+def problem46():
+    """ Goldbach's other conjecture
+    What is the smallest odd composite
+    that cannot be written as the sum of a prime and twice a square?
+
+    """
+    number = 33
+    while True:
+        number += 2
+
+        if mathhelper.is_prime(number):
+            continue
+
+        biggest_square = int(math.sqrt(number / 2))
+        for power in range(2, biggest_square + 1):
+            if mathhelper.is_prime(number - (2 * (power ** 2))):
+                break
+
+            if power == biggest_square:
+                return number
+
+
 def problem47():
     """ Distinct primes factors
     Find the first four consecutive integers to have four distinct prime factors.
