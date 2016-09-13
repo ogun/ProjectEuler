@@ -656,6 +656,14 @@ def problem43():
     return return_value
 
 
+def problem48():
+    """ Self powers
+    Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000.
+
+    """
+    return int(str(sum(x ** x for x in range(1, 1001)))[-10:])
+
+
 def problem50():
     """ Consecutive prime sum
     Which prime, below one-million, can be written as the sum of the most consecutive primes?
