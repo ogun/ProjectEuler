@@ -50,7 +50,7 @@ def fibonacci_list(max_number):
     """Verilen sayıya kadar olan fibonacci sayılarını listeler
     max_number olarak None verilirse float('inf')'e kadar listeler"""
     current_number, next_number = 1, 1
-    limit = float('inf') if max_number is None else int(max_number) + 1
+    limit = float("inf") if max_number is None else int(max_number) + 1
     while current_number < limit:
         yield current_number
         current_number, next_number = next_number, current_number + next_number
@@ -146,7 +146,9 @@ def least_common_multiple(*numbers):
         return numbers[0]
 
     if len(numbers) == 2:
-        return int(numbers[0] * numbers[1]) // greatest_common_divisor(numbers[0], numbers[1])
+        return int(numbers[0] * numbers[1]) // greatest_common_divisor(
+            numbers[0], numbers[1]
+        )
 
     first_number = numbers[0]
     return_value = first_number
@@ -167,7 +169,7 @@ def prime_divisor_list(number, with_group=True):
     if is_prime(number):
         if with_group:
             return [[number]]
-        
+
         return [number]
 
     return_value = []
@@ -191,7 +193,7 @@ def prime_divisor_list(number, with_group=True):
 def prime_list(max_number, reverse=False):
     """Verilen sayıya kadar olan asal sayıları listeler
     max_number olarak None verilirse float('inf')'e kadar listeler"""
-    limit = float('inf') if max_number is None else int(max_number) + 1
+    limit = float("inf") if max_number is None else int(max_number) + 1
     number = max_number if reverse else 6
     if reverse:
         if number > 6:
@@ -268,7 +270,9 @@ def sum_factors(number, proper=False):
     sum_products = 1
     for element_count in range(1, len(prime_divisors) + 1):
         sum_products += sum(
-            product(x) for x in set(itertools.combinations(prime_divisors, element_count)))
+            product(x)
+            for x in set(itertools.combinations(prime_divisors, element_count))
+        )
 
     if proper:
         sum_products -= abs(number)
@@ -300,7 +304,7 @@ def sum_powers_of_digits(number, power):
 def triangle_list(max_number):
     """Verilen sayıya kadar olan triangle sayıları listeler
     max_number olarak None verilirse float('inf')'e kadar listeler"""
-    limit = float('inf') if max_number is None else int(max_number) + 1
+    limit = float("inf") if max_number is None else int(max_number) + 1
     number = 1
     while number <= limit:
         return_value = int(number * (number + 1) / 2)

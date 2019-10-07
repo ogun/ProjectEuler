@@ -117,5 +117,6 @@ class TestProjectEuler(unittest.TestCase):
     def test_problem67(self):
         self.assertEqual(projecteuler.problem67(), 7273)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
