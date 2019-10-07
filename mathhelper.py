@@ -161,14 +161,14 @@ def prime_divisor_list(number, with_group=True):
     Örn: 12 için [[2, 2], [3]]"""
     number = abs(number)
 
-    if number == 0 or number == 1:
+    if number in [0, 1]:
         return []
 
     if is_prime(number):
         if with_group:
             return [[number]]
-        else:
-            return [number]
+        
+        return [number]
 
     return_value = []
     limit = int(number / 2) + 1
